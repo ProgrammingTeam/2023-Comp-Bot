@@ -4,9 +4,9 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Grabber;
-import frc.robot.Constants;
 
 public class GrabCubeOrCone extends CommandBase {
   private Grabber m_coneOrCube;
@@ -35,6 +35,7 @@ public class GrabCubeOrCone extends CommandBase {
       default: openClaw = false;
       break;
     }
+    SmartDashboard.putBoolean("Is the claw open ", openClaw);
     m_coneOrCube.openGrabber(openClaw);
   }
 

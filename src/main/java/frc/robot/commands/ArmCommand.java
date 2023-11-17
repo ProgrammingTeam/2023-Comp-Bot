@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Arm;
@@ -35,6 +36,7 @@ public class ArmCommand extends CommandBase {
       default: armLocation = false;
       break;
     }
+    SmartDashboard.putBoolean("is the arm up ", armLocation);
     m_Arm.openGrabber(armLocation);
 
   }

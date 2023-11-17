@@ -12,7 +12,7 @@ private Grabber m_Grabber;
 private final int m_inOrOut;
 
 
-double grabbySpeed;
+double grabbingSpeed;
   /** Creates a new GrabCommand. */
   public GrabCommand(Grabber grabs, int innerOrOuter) {
   m_Grabber = grabs;
@@ -32,14 +32,14 @@ double grabbySpeed;
   @Override
   public void execute() {
     switch (m_inOrOut) {
-  case 1: grabbySpeed = Constants.grabberMotorSpeed;
+  case 1: grabbingSpeed = Constants.grabberMotorSpeed;
   break;
-  case 2: grabbySpeed = -Constants.grabberMotorSpeed;
+  case 2: grabbingSpeed = -Constants.grabberMotorSpeed;
   break;
-  default: grabbySpeed = 0;
+  default: grabbingSpeed = 0;
   break;     
     }
-    m_Grabber.setMotors(grabbySpeed);
+    m_Grabber.setMotors(grabbingSpeed);
   }
 
   // Called once the command ends or is interrupted.

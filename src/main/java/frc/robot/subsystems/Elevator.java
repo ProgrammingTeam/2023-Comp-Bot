@@ -9,6 +9,7 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -58,5 +59,6 @@ public class Elevator extends SubsystemBase {
     leftElevatorMotor.set(-verticlespeed);
     rightElevatorMotor.set(verticlespeed); 
     }
+    SmartDashboard.putNumber("the elevator position is ", Enc_Left.getPosition());
   }
 }

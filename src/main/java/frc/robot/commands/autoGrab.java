@@ -11,7 +11,7 @@ import frc.robot.subsystems.Grabber;
 public class autoGrab extends CommandBase {
   private Grabber m_autoGrab;
   private int m_autoinorout;
-  private double autoGrabbySpeed;
+  private double autoGrabbingSpeed;
   /** Creates a new autoGrab. */
   public autoGrab(Grabber autoGrab, int autoinnerOrOuter) {
     m_autoGrab = autoGrab;
@@ -29,14 +29,14 @@ public class autoGrab extends CommandBase {
   @Override
   public void execute() {
     switch (m_autoinorout) {
-      case 1: autoGrabbySpeed = Constants.grabberMotorSpeed;
+      case 1: autoGrabbingSpeed = Constants.grabberMotorSpeed;
       break;
-      case 2: autoGrabbySpeed = -Constants.grabberMotorSpeed;
+      case 2: autoGrabbingSpeed = -Constants.grabberMotorSpeed;
       break;
-      default: autoGrabbySpeed = 0;
+      default: autoGrabbingSpeed = 0;
       break;  
     } 
-    m_autoGrab.setMotors(autoGrabbySpeed);
+    m_autoGrab.setMotors(autoGrabbingSpeed);
   }
 
   // Called once the command ends or is interrupted.

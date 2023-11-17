@@ -10,7 +10,7 @@ import frc.robot.subsystems.Grabber;
 public class autoCubeorCone extends CommandBase {
   private Grabber m_Grabber;
   private int m_AutoCubeorCone;
-  boolean chooser; 
+  boolean coneCubechooser; 
   /** Creates a new autoCubeorCone. */
   public autoCubeorCone(Grabber autoGrab, int autoPickup) {
     m_Grabber = autoGrab;
@@ -27,12 +27,12 @@ public class autoCubeorCone extends CommandBase {
   @Override
   public void execute() {
     switch (m_AutoCubeorCone) {
-      case 1: chooser = true;
+      case 1: coneCubechooser = true;
       break;
-      default: chooser = false;
+      default: coneCubechooser = false;
       break;
     }
-    m_Grabber.openGrabber(chooser);
+    m_Grabber.openGrabber(coneCubechooser);
   }
 
   // Called once the command ends or is interrupted.

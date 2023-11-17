@@ -4,16 +4,10 @@
 
 package frc.robot.commands;
 
-
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Grabber;
-import frc.robot.commands.wait;
 /** The main autonomous command to pickup and deliver the soda to the box. */
 public class Autonomous extends SequentialCommandGroup {
   

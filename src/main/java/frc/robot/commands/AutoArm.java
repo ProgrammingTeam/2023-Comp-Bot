@@ -8,13 +8,13 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Arm;
 
 public class AutoArm extends CommandBase {
-  private Arm m_Arm;
+  private final Arm m_Arm;
   private final int m_AutoArmMovment;
-  boolean armLocation;
+  boolean autoArmUp;
   /** Creates a new AutoArm. */
-  public AutoArm(Arm AutoArm, int autMove) {
+  public AutoArm(Arm AutoArm, int autoMove) {
     m_Arm = AutoArm;
-    m_AutoArmMovment = autMove;
+    m_AutoArmMovment = autoMove;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_Arm);
   }
@@ -27,12 +27,12 @@ public class AutoArm extends CommandBase {
   @Override
   public void execute() {
     switch (m_AutoArmMovment) {
-      case 1: armLocation = true;
+      case 1: autoArmUp = true;
       break;
-      default: armLocation = false;
+      default: autoArmUp = false;
       break;
     }
-    m_Arm.openGrabber(armLocation);
+    m_Arm.openGrabber(autoArmUp);
   }
 
   // Called once the command ends or is interrupted.

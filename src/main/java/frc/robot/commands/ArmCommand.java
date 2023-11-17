@@ -6,13 +6,12 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.subsystems.Arm;
 
 public class ArmCommand extends CommandBase {
   private Arm m_Arm;
   private final int m_armMovment;
-  boolean armLocation;
+  boolean armUp;
 
   /** Creates a new ArmCommand. */
   public ArmCommand(Arm SubArm, int moveArm) {
@@ -30,14 +29,14 @@ public class ArmCommand extends CommandBase {
   @Override
   public void execute() {
     switch (m_armMovment) {
-      case 1:  armLocation = true;
+      case 1:  armUp = true;
       break;
       
-      default: armLocation = false;
+      default: armUp = false;
       break;
     }
-    SmartDashboard.putBoolean("is the arm up ", armLocation);
-    m_Arm.openGrabber(armLocation);
+    SmartDashboard.putBoolean("is the arm up ", armUp);
+    m_Arm.openGrabber(armUp);
 
   }
 

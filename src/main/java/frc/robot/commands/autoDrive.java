@@ -9,17 +9,16 @@ import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrain;
 
 public class autoDrive extends CommandBase {
-  DriveTrain m_DriveTrain;
-  int autoDirection;
+private final DriveTrain m_DriveTrain;
+private final int autoDirection;
   double autoDriveSpeed;
   double reverseDriveSpeed;
-  double driveLeft_Enc_position;
+  double drive_Enc_position;
   double driveRight_Enc_position;
   double maxLeftDrive_position = 6;
   double maxReverseLeftDrive_position = -61;
   double maxRighttDrive_position = 16;
-  boolean metDriveLeftDistance;
-  boolean metDriveRightDistance;
+  boolean metDriveDistance;
   /** Creates a new autoDrive. */
   public autoDrive(DriveTrain automonusDrive, int driveDirection, int rev_dist) {
     m_DriveTrain = automonusDrive;
@@ -41,16 +40,16 @@ public class autoDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    driveLeft_Enc_position = m_DriveTrain.Enc_moveLeft.getPosition();
+    drive_Enc_position = m_DriveTrain.Enc_moveLeft.getPosition();
     driveRight_Enc_position = m_DriveTrain.Enc_moveRight.getPosition();
     switch (autoDirection) {
 
       case 1: autoDriveSpeed = Constants.autoDrive;
               reverseDriveSpeed = 0;
-              metDriveLeftDistance = driveLeft_Enc_position >= maxLeftDrive_position;
+              metDriveDistance = drive_Enc_position >= maxLeftDrive_position;
       break;
       case 2: autoDriveSpeed = -Constants.autoBackDrive;
-              metDriveLeftDistance = driveLeft_Enc_position <= maxReverseLeftDrive_position;
+              metDriveDistance = drive_Enc_position <= maxReverseLeftDrive_position;
       break;
       case 3: autoDriveSpeed = 0;
               reverseDriveSpeed = -Constants.autoReverseDrive;
@@ -74,6 +73,6 @@ public class autoDrive extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return (metDriveLeftDistance);
+    return (metDriveDistance);
   }
 }

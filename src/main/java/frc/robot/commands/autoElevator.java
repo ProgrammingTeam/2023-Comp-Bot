@@ -9,7 +9,7 @@ import frc.robot.Constants;
 import frc.robot.subsystems.Elevator;
 
 public class autoElevator extends CommandBase {
-  private Elevator m_Elevator;
+  private final Elevator m_Elevator;
   private final int m_autoDirection;
   double autoSpeed;
   double Enc_Position;
@@ -17,8 +17,8 @@ public class autoElevator extends CommandBase {
   boolean metDistance = false;
 
   /** Creates a new autoElevator. */
-  public autoElevator(Elevator autoSystem, int autoIndicater) {
-    m_Elevator = autoSystem;
+  public autoElevator(Elevator autoEle, int autoIndicater) {
+    m_Elevator = autoEle;
     m_autoDirection = autoIndicater;
     addRequirements(m_Elevator);
     // Use addRequirements() here to declare subsystem dependencies.

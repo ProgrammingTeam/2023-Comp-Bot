@@ -12,6 +12,7 @@ public class GrabCubeOrCone extends CommandBase {
   private Grabber m_coneOrCube;
   private final int m_selector;
   boolean openClaw;
+
   /** Creates a new GrabCubeOrCone. */
   public GrabCubeOrCone(Grabber coneOrCube, int selector) {
     m_coneOrCube = coneOrCube;
@@ -22,18 +23,20 @@ public class GrabCubeOrCone extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
-  
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     switch (m_selector) {
-      case 1:  openClaw = true;
-      break;
-      
-      default: openClaw = false;
-      break;
+      case 1:
+        openClaw = true;
+        break;
+
+      default:
+        openClaw = false;
+        break;
     }
     SmartDashboard.putBoolean("Is the claw open ", openClaw);
     m_coneOrCube.openGrabber(openClaw);
@@ -41,7 +44,8 @@ public class GrabCubeOrCone extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+  }
 
   // Returns true when the command should end.
   @Override

@@ -12,6 +12,7 @@ public class autoGrab extends CommandBase {
   private Grabber m_autoGrab;
   private int m_autoinorout;
   private double autoGrabbingSpeed;
+
   /** Creates a new autoGrab. */
   public autoGrab(Grabber autoGrab, int autoinnerOrOuter) {
     m_autoGrab = autoGrab;
@@ -23,25 +24,30 @@ public class autoGrab extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     switch (m_autoinorout) {
-      case 1: autoGrabbingSpeed = Constants.grabberMotorSpeed;
-      break;
-      case 2: autoGrabbingSpeed = -Constants.grabberMotorSpeed;
-      break;
-      default: autoGrabbingSpeed = 0;
-      break;  
-    } 
+      case 1:
+        autoGrabbingSpeed = Constants.grabberMotorSpeed;
+        break;
+      case 2:
+        autoGrabbingSpeed = -Constants.grabberMotorSpeed;
+        break;
+      default:
+        autoGrabbingSpeed = 0;
+        break;
+    }
     m_autoGrab.setMotors(autoGrabbingSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+  }
 
   // Returns true when the command should end.
   @Override

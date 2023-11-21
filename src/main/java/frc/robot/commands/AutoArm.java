@@ -11,6 +11,7 @@ public class AutoArm extends CommandBase {
   private final Arm m_Arm;
   private final int m_AutoArmMovment;
   boolean autoArmUp;
+
   /** Creates a new AutoArm. */
   public AutoArm(Arm AutoArm, int autoMove) {
     m_Arm = AutoArm;
@@ -21,23 +22,27 @@ public class AutoArm extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     switch (m_AutoArmMovment) {
-      case 1: autoArmUp = true;
-      break;
-      default: autoArmUp = false;
-      break;
+      case 1:
+        autoArmUp = true;
+        break;
+      default:
+        autoArmUp = false;
+        break;
     }
     m_Arm.openGrabber(autoArmUp);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+  }
 
   // Returns true when the command should end.
   @Override

@@ -3,6 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.subsystems;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -14,26 +15,28 @@ import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
 public class DriveTrain extends SubsystemBase {
-  public final CANSparkMax FrontLeft = new CANSparkMax(Constants.FrontL, MotorType.kBrushless);
-  public final CANSparkMax FrontRight = new CANSparkMax(Constants.FrontR, MotorType.kBrushless);
+  // Motor calls
+  private final CANSparkMax FrontLeft = new CANSparkMax(Constants.FrontL, MotorType.kBrushless);
+  private final CANSparkMax FrontRight = new CANSparkMax(Constants.FrontR, MotorType.kBrushless);
+  // note this spot if something goes wrong
   private final CANSparkMax RearLeft = new CANSparkMax(Constants.RearL, MotorType.kBrushless);
   private final CANSparkMax RearRight = new CANSparkMax(Constants.RearR, MotorType.kBrushless);
-  
-  
+
+  // encoder calls
   public final RelativeEncoder Enc_moveLeft = FrontLeft.getEncoder();
-   public final RelativeEncoder Enc_moveRight = FrontRight.getEncoder(); 
-    
-  
+  public final RelativeEncoder Enc_moveRight = FrontRight.getEncoder();
+
+  // Motor control calls
   private final MotorControllerGroup m_leftMotors = new MotorControllerGroup(
-    FrontLeft,RearLeft);
+      FrontLeft, RearLeft);
   private final MotorControllerGroup m_rightMotors = new MotorControllerGroup(
-    FrontRight,RearRight);
-   
+      FrontRight, RearRight);
+
   private final DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
 
   private double speedThrottle = 1.0;
   private boolean throttleOn;
-  
+
   // Creates a new DriveTrain.
   public DriveTrain() {
     m_rightMotors.setInverted(true);
@@ -42,36 +45,35 @@ public class DriveTrain extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    //setDefaultCommand(new ArcadeDrive());
+    // setDefaultCommand(new ArcadeDrive());
   }
-  
+
   public void setMotors(double speed, double rotation) {
-    //m_drive.tankDrive(speedL, speedR);
+    // m_drive.tankDrive(speedL, speedR);
     if (RobotContainer.m_joysL.getRawButton(1)) {
       throttleOn = true;
-    }
-    else {
+    } else {
       throttleOn = false;
     }
-    
-    if (throttleOn){
+
+    if (throttleOn) {
       speedThrottle = Constants.throttleSpeed;
-    }
-    else {
+    } else {
       speedThrottle = 1.0;
     }
 
-    m_drive.curvatureDrive(speed*speedThrottle, rotation*Constants.turnLimiter*speedThrottle, true);
+    m_drive.curvatureDrive(speed * speedThrottle, rotation * Constants.turnLimiter * speedThrottle, true);
 
     SmartDashboard.putNumber("Drive Encoder", Enc_moveLeft.getPosition());
     SmartDashboard.putBoolean("Slow Mode Activated", throttleOn);
- //   SmartDashboard.putBoolean("Slow Mode Activated", RobotContainer.slowMode);
+    // SmartDashboard.putBoolean("Slow Mode Activated", RobotContainer.slowMode);
 
-/*     FrontLeft.set(speedL);
-    RearLeft.set(speedL);
-    FrontRight.set(speedR);
-    RearRight.set(speedR); */
+    /*
+     * FrontLeft.set(speedL);
+     * RearLeft.set(speedL);
+     * FrontRight.set(speedR);
+     * RearRight.set(speedR);
+     */
   }
 
- 
 }

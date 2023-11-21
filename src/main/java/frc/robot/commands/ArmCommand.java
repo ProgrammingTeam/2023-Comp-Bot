@@ -23,17 +23,20 @@ public class ArmCommand extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     switch (m_armMovment) {
-      case 1:  armUp = true;
-      break;
-      
-      default: armUp = false;
-      break;
+      case 1:
+        armUp = true;
+        break;
+
+      default:
+        armUp = false;
+        break;
     }
     SmartDashboard.putBoolean("is the arm up ", armUp);
     m_Arm.openGrabber(armUp);
@@ -42,7 +45,8 @@ public class ArmCommand extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+  }
 
   // Returns true when the command should end.
   @Override

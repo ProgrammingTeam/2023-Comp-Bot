@@ -9,8 +9,8 @@ import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrain;
 
 public class autoDrive extends CommandBase {
-private final DriveTrain m_DriveTrain;
-private final int autoDirection;
+  private final DriveTrain m_DriveTrain;
+  private final int autoDirection;
   double autoDriveSpeed;
   double reverseDriveSpeed;
   double drive_Enc_position;
@@ -19,12 +19,13 @@ private final int autoDirection;
   double maxReverseLeftDrive_position = -61;
   double maxRighttDrive_position = 16;
   boolean metDriveDistance;
+
   /** Creates a new autoDrive. */
   public autoDrive(DriveTrain automonusDrive, int driveDirection, int rev_dist) {
     m_DriveTrain = automonusDrive;
     maxReverseLeftDrive_position = rev_dist;
     autoDirection = driveDirection;
-    
+
     addRequirements(m_DriveTrain);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -44,22 +45,27 @@ private final int autoDirection;
     driveRight_Enc_position = m_DriveTrain.Enc_moveRight.getPosition();
     switch (autoDirection) {
 
-      case 1: autoDriveSpeed = Constants.autoDrive;
-              reverseDriveSpeed = 0;
-              metDriveDistance = drive_Enc_position >= maxLeftDrive_position;
-      break;
-      case 2: autoDriveSpeed = -Constants.autoBackDrive;
-              metDriveDistance = drive_Enc_position <= maxReverseLeftDrive_position;
-      break;
-      case 3: autoDriveSpeed = 0;
-              reverseDriveSpeed = -Constants.autoReverseDrive;
-      break;
-      case 4: autoDriveSpeed = 0;
-              reverseDriveSpeed = Constants.autoReverseDrive;
-      break;
-      default: autoDriveSpeed = 0;
-               reverseDriveSpeed = 0;
-      break;
+      case 1:
+        autoDriveSpeed = Constants.autoDrive;
+        reverseDriveSpeed = 0;
+        metDriveDistance = drive_Enc_position >= maxLeftDrive_position;
+        break;
+      case 2:
+        autoDriveSpeed = -Constants.autoBackDrive;
+        metDriveDistance = drive_Enc_position <= maxReverseLeftDrive_position;
+        break;
+      case 3:
+        autoDriveSpeed = 0;
+        reverseDriveSpeed = -Constants.autoReverseDrive;
+        break;
+      case 4:
+        autoDriveSpeed = 0;
+        reverseDriveSpeed = Constants.autoReverseDrive;
+        break;
+      default:
+        autoDriveSpeed = 0;
+        reverseDriveSpeed = 0;
+        break;
     }
     m_DriveTrain.setMotors(autoDriveSpeed, reverseDriveSpeed);
   }

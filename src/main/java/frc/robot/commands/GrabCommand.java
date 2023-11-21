@@ -7,18 +7,19 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Grabber;
+
 public class GrabCommand extends CommandBase {
-private Grabber m_Grabber;
-private final int m_inOrOut;
+  private Grabber m_Grabber;
+  private final int m_inOrOut;
 
+  double grabbingSpeed;
 
-double grabbingSpeed;
   /** Creates a new GrabCommand. */
   public GrabCommand(Grabber grabs, int innerOrOuter) {
-  m_Grabber = grabs;
-  m_inOrOut = innerOrOuter;   
+    m_Grabber = grabs;
+    m_inOrOut = innerOrOuter;
 
-// Use addRequirements() here to declare subsystem dependencies.
+    // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_Grabber);
   }
 
@@ -32,19 +33,23 @@ double grabbingSpeed;
   @Override
   public void execute() {
     switch (m_inOrOut) {
-  case 1: grabbingSpeed = Constants.grabberMotorSpeed;
-  break;
-  case 2: grabbingSpeed = -Constants.grabberMotorSpeed;
-  break;
-  default: grabbingSpeed = 0;
-  break;     
+      case 1:
+        grabbingSpeed = Constants.grabberMotorSpeed;
+        break;
+      case 2:
+        grabbingSpeed = -Constants.grabberMotorSpeed;
+        break;
+      default:
+        grabbingSpeed = 0;
+        break;
     }
     m_Grabber.setMotors(grabbingSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+  }
 
   // Returns true when the command should end.
   @Override

@@ -19,10 +19,12 @@ public class Grabber extends SubsystemBase {
   public final CANSparkMax rightGrabMotor = new CANSparkMax(Constants.grabR, MotorType.kBrushless);
 
   // Grabber Pneumatic Solenoid Valve
-  public final DoubleSolenoid grippy = new DoubleSolenoid(10, PneumaticsModuleType.REVPH, Constants.pneumaticsOut, Constants.pneumaticsIn);
+  public final DoubleSolenoid grippy = new DoubleSolenoid(10, PneumaticsModuleType.REVPH, Constants.pneumaticsOut,
+      Constants.pneumaticsIn);
 
   /** Creates a new Grabber. */
-  public Grabber() {}
+  public Grabber() {
+  }
 
   @Override
   public void periodic() {
@@ -41,8 +43,7 @@ public class Grabber extends SubsystemBase {
     // kReverse will Open the Grabber Claw
     if (openClose) {
       grippy.set(Value.kForward);
-    }
-    else {
+    } else {
       grippy.set(Value.kReverse);
     }
   }

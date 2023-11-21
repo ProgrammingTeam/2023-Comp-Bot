@@ -7,9 +7,10 @@ import frc.robot.commands.Turn;*/
 
 public class OI {
 	/*
-	Setup for Joystick class.
-	This is every button and joystick on the controller that can be used in the code
-	*/
+	 * Setup for Joystick class.
+	 * This is every button and joystick on the controller that can be used in the
+	 * code
+	 */
 	private static XboxController joy = new XboxController(0);
 
 	public static final JoystickButton A = new JoystickButton(joy, 1);
@@ -22,19 +23,21 @@ public class OI {
 	public static final JoystickButton START = new JoystickButton(joy, 8);
 	public static final JoystickButton LSB = new JoystickButton(joy, 9);
 	public static final JoystickButton RSB = new JoystickButton(joy, 10);
-	
-/* 	public static final LTrigger LT = new LTrigger();
-	public static final RTrigger RT = new RTrigger(); */
+
+	/*
+	 * public static final LTrigger LT = new LTrigger();
+	 * public static final RTrigger RT = new RTrigger();
+	 */
 
 	// Left joystick X axis
 	public static double LEFT_X_AXIS() {
-        return joy.getRawAxis(0);
-    }
+		return joy.getRawAxis(0);
+	}
 
 	// Left joystick Y axis
-    public static double LEFT_Y_AXIS() {
-        return joy.getRawAxis(1);
-    }
+	public static double LEFT_Y_AXIS() {
+		return joy.getRawAxis(1);
+	}
 
 	public static double GetLT() {
 		return joy.getRawAxis(2);
@@ -45,35 +48,36 @@ public class OI {
 	}
 
 	// Right joystick X axis
-    public static double RIGHT_X_AXIS() {
-        return joy.getRawAxis(4);
-    }
+	public static double RIGHT_X_AXIS() {
+		return joy.getRawAxis(4);
+	}
 
 	// Right joystick Y axis
-    public static double RIGHT_Y_AXIS() {
-        return joy.getRawAxis(5);
-    }
-	
-	public OI()
-	{
+	public static double RIGHT_Y_AXIS() {
+		return joy.getRawAxis(5);
+	}
+
+	public OI() {
 
 	}
 }
 
-/* class LTrigger extends Trigger {
-	public LTrigger() {}
-	
-	@Override
-	public boolean get() {
-		return OI.GetLT() > 0.9;
-	}
-}
-
-class RTrigger extends Button {
-	public RTrigger() {}
-	
-	@Override
-	public boolean get() {
-		return OI.GetRT() > 0.9;
-	}
-} */
+/*
+ * class LTrigger extends Trigger {
+ * public LTrigger() {}
+ * 
+ * @Override
+ * public boolean get() {
+ * return OI.GetLT() > 0.9;
+ * }
+ * }
+ * 
+ * class RTrigger extends Button {
+ * public RTrigger() {}
+ * 
+ * @Override
+ * public boolean get() {
+ * return OI.GetRT() > 0.9;
+ * }
+ * }
+ */

@@ -12,6 +12,7 @@ public class ElevatorCommand extends CommandBase {
   private Elevator m_Elevator;
   private final int m_direction;
   double elevatorSpeed;
+
   /** Creates a new ElevatorCommand. */
   public ElevatorCommand(Elevator system, int indicater) {
     m_Elevator = system;
@@ -29,15 +30,18 @@ public class ElevatorCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-   
+
     switch (m_direction) {
 
-      case 1: elevatorSpeed = Constants.elevatorUpSpeed;
-              break;
-      case 2: elevatorSpeed = -Constants.elevatorDownSpeed;
-              break;
-      default: elevatorSpeed = 0.0;
-              break;
+      case 1:
+        elevatorSpeed = Constants.elevatorUpSpeed;
+        break;
+      case 2:
+        elevatorSpeed = -Constants.elevatorDownSpeed;
+        break;
+      default:
+        elevatorSpeed = 0.0;
+        break;
 
     }
     m_Elevator.setMotors(elevatorSpeed);
@@ -45,7 +49,8 @@ public class ElevatorCommand extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+  }
 
   // Returns true when the command should end.
   @Override

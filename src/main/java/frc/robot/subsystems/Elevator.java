@@ -19,8 +19,10 @@ public class Elevator extends SubsystemBase {
   public final DigitalInput upperLimitSwitch = new DigitalInput(Constants.elevatorUpperLimitSwitch);
   public final DigitalInput lowerLimitSwitch = new DigitalInput(Constants.elevatorLowerLimitSwitch);
   public final RelativeEncoder Enc_Left = leftElevatorMotor.getEncoder();
+
   /** Creates a new Elevator. */
-  public Elevator() {}
+  public Elevator() {
+  }
 
   @Override
   public void periodic() {
@@ -28,36 +30,35 @@ public class Elevator extends SubsystemBase {
   }
 
   public void setMotors(double verticlespeed) {
-    if (Constants.elevatorLimitSwitchesActivated){
-      
-      if (upperLimitSwitch.get()&&verticlespeed>0) {
-      leftElevatorMotor.set(-verticlespeed);
-      rightElevatorMotor.set(verticlespeed); 
+    if (Constants.elevatorLimitSwitchesActivated) {
+
+      if (upperLimitSwitch.get() && verticlespeed > 0) {
+        leftElevatorMotor.set(-verticlespeed);
+        rightElevatorMotor.set(verticlespeed);
       }
-      
-     else if(!upperLimitSwitch.get()&&verticlespeed>0) {
-      leftElevatorMotor.set(0);
-      rightElevatorMotor.set(0); 
+
+      else if (!upperLimitSwitch.get() && verticlespeed > 0) {
+        leftElevatorMotor.set(0);
+        rightElevatorMotor.set(0);
       }
-      
-      else if(!lowerLimitSwitch.get()&&verticlespeed<0) {
-      leftElevatorMotor.set(0);
-      rightElevatorMotor.set(0); 
+
+      else if (!lowerLimitSwitch.get() && verticlespeed < 0) {
+        leftElevatorMotor.set(0);
+        rightElevatorMotor.set(0);
       }
-      
-      else if(lowerLimitSwitch.get()&&verticlespeed<0) {
-      leftElevatorMotor.set(-verticlespeed);
-      rightElevatorMotor.set(verticlespeed); 
+
+      else if (lowerLimitSwitch.get() && verticlespeed < 0) {
+        leftElevatorMotor.set(-verticlespeed);
+        rightElevatorMotor.set(verticlespeed);
       }
-      
+
       else {
-      leftElevatorMotor.set(0);
-      rightElevatorMotor.set(0);
-       }
-    }
-    else {
-    leftElevatorMotor.set(-verticlespeed);
-    rightElevatorMotor.set(verticlespeed); 
+        leftElevatorMotor.set(0);
+        rightElevatorMotor.set(0);
+      }
+    } else {
+      leftElevatorMotor.set(-verticlespeed);
+      rightElevatorMotor.set(verticlespeed);
     }
     SmartDashboard.putNumber("the elevator position is ", Enc_Left.getPosition());
   }

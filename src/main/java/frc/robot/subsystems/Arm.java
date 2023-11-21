@@ -13,24 +13,26 @@ import frc.robot.Constants;
 public class Arm extends SubsystemBase {
 
   // Arm Pneumatic Solenoid Valve
-  public final DoubleSolenoid pushArm = new DoubleSolenoid(10, PneumaticsModuleType.REVPH, Constants.armOut, Constants.armStowed);
-  
+  public final DoubleSolenoid pushArm = new DoubleSolenoid(10, PneumaticsModuleType.REVPH, Constants.armOut,
+      Constants.armStowed);
+
   /** Creates a new Arm. */
-  public Arm() {}
+  public Arm() {
+  }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
+
   public void openGrabber(boolean armMotion) {
     // This method activates Arm pneumatic piston
-    // kForward will Extend the Arm
-    // kReverse will Retract the Arm
     if (armMotion) {
       pushArm.set(Value.kForward);
-    }
-    else {
+      // kForward will Extend the Arm
+    } else {
       pushArm.set(Value.kReverse);
+      // kReverse will Retract the Arm
     }
   }
 }

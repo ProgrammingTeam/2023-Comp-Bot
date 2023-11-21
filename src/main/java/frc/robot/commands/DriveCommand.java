@@ -25,14 +25,14 @@ public class DriveCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_drive.setMotors(0,0);
+    m_drive.setMotors(0, 0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //double leftStickY = joystickOI.Y_Axis();
-  //Robot.drive.setLeftMotors(leftStickY);
+    // double leftStickY = joystickOI.Y_Axis();
+    // Robot.drive.setLeftMotors(leftStickY);
     double Speed = m_speedL.get();
     double Rotation = m_speedR.get();
 
@@ -42,7 +42,7 @@ public class DriveCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_drive.setMotors(0,0);
+    m_drive.setMotors(0, 0);
   }
 
   // Returns true when the command should end.

@@ -29,25 +29,28 @@ public class autoElevator extends CommandBase {
   public void initialize() {
     m_Elevator.setMotors(0);
     m_Elevator.Enc_Left.setPosition(0);
- 
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-  
+
     Enc_Position = m_Elevator.Enc_Left.getPosition();
 
     switch (m_autoDirection) {
 
-      case 1: autoSpeed = Constants.elevatorUpSpeed;
-              metDistance = Enc_Position <= -max_Position;
-              break;
-      case 2: autoSpeed = -Constants.elevatorDownSpeed;
-              metDistance = Enc_Position >= max_Position;
-              break;
-      default: autoSpeed = 0.0;
-              break;
+      case 1:
+        autoSpeed = Constants.elevatorUpSpeed;
+        metDistance = Enc_Position <= -max_Position;
+        break;
+      case 2:
+        autoSpeed = -Constants.elevatorDownSpeed;
+        metDistance = Enc_Position >= max_Position;
+        break;
+      default:
+        autoSpeed = 0.0;
+        break;
     }
     m_Elevator.setMotors(autoSpeed);
   }
@@ -55,7 +58,7 @@ public class autoElevator extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-   m_Elevator.setMotors(0);
+    m_Elevator.setMotors(0);
   }
 
   // Returns true when the command should end.

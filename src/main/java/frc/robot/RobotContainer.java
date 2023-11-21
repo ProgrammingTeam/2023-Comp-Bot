@@ -38,7 +38,7 @@ public class RobotContainer {
   private final Elevator m_elevator = new Elevator();
   private final Grabber m_Grabber = new Grabber();
   private final Arm m_Arm = new Arm();
-  public final static Joystick m_joysL = new Joystick(Constants.leftjoystickport);
+  public final static  Joystick m_joysL = new Joystick(Constants.leftjoystickport);
   public final Joystick m_joysR = new Joystick(Constants.rightjoystickport);
   // public static Boolean slowMode = false;
 

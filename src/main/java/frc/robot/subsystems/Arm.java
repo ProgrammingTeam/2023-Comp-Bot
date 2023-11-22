@@ -13,7 +13,7 @@ import frc.robot.Constants;
 public class Arm extends SubsystemBase {
 
   // Arm Pneumatic Solenoid Valve
-  public final DoubleSolenoid pushArm = new DoubleSolenoid(10, PneumaticsModuleType.REVPH, Constants.armOut,
+  public final DoubleSolenoid raiseArm = new DoubleSolenoid(10, PneumaticsModuleType.REVPH, Constants.armOut,
       Constants.armStowed);
 
   /** Creates a new Arm. */
@@ -28,10 +28,10 @@ public class Arm extends SubsystemBase {
   public void openGrabber(boolean armMotion) {
     // This method activates Arm pneumatic piston
     if (armMotion) {
-      pushArm.set(Value.kForward);
-      // kForward will Extend the Arm
+      raiseArm.set(Value.kForward);
+      // kForward will Raise the Arm
     } else {
-      pushArm.set(Value.kReverse);
+      raiseArm.set(Value.kReverse);
       // kReverse will Retract the Arm
     }
   }

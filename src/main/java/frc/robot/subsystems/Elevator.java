@@ -61,5 +61,7 @@ public class Elevator extends SubsystemBase {
       rightElevatorMotor.set(verticlespeed);
     }
     SmartDashboard.putNumber("the elevator position is ", Enc_Left.getPosition());
+    SmartDashboard.putBoolean("elevator at Bottom", lowerLimitSwitch.get());
+    SmartDashboard.putBoolean("elevator at Top", upperLimitSwitch.get());
   }
 }

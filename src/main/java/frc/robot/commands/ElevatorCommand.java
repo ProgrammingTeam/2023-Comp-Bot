@@ -9,7 +9,7 @@ import frc.robot.Constants;
 import frc.robot.subsystems.Elevator;
 
 public class ElevatorCommand extends CommandBase {
-  private Elevator m_Elevator;
+  private final Elevator m_Elevator;
   private final int m_direction;
   double elevatorSpeed;
 

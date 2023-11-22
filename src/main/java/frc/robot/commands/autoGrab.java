@@ -9,7 +9,7 @@ import frc.robot.Constants;
 import frc.robot.subsystems.Grabber;
 
 public class autoGrab extends CommandBase {
-  private Grabber m_autoGrab;
+  private final Grabber m_autoGrab;
   private int m_autoinorout;
   private double autoGrabbingSpeed;
 

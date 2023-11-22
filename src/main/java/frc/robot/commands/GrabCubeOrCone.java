@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Grabber;
 
 public class GrabCubeOrCone extends CommandBase {
-  private Grabber m_coneOrCube;
+  private final Grabber m_coneOrCube;
   private final int m_selector;
   boolean openClaw;
 
